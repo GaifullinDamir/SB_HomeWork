@@ -24,6 +24,23 @@ namespace HW_Collections.Services
             return false;
         }
 
+        public bool DeleteDepartment(string depName)
+        {
+            if (_departments.DeleteDepartment(depName))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool EditDepName(string oldName, string newName)
+        {
+            if (_departments.EditDepName(oldName, newName))
+            {
+                return true;
+            }
+            return false;
+        }
         public void ShowDepartments()
         {
             _departments.ShowDepartments();

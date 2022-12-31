@@ -28,6 +28,27 @@
             };
             _departments.Add(department);
         }
+
+        public bool DeleteDepartment(string depName)
+        {
+            if (SearchDepartmentByName(depName))
+            {
+                Department tempDep = null;
+                foreach (var dep in _departments)
+                {
+                    if (dep.DepName == depName)
+                    {
+                        tempDep = dep;
+                    }
+                }
+                if (tempDep != null)
+                {
+                    _departments.Remove(tempDep);
+                    return true;
+                }
+            }
+            return false;
+        }
         public void ShowDepartments()
         {
             Console.WriteLine("\nДепартамент:\tДата создания:\t");
@@ -35,6 +56,19 @@
             {
                 Console.WriteLine($"{department.DepName}\t{department.DateOfCreate}");
             }
+        }
+
+        public bool EditDepName(string oldName, string newName)
+        {
+            foreach (var dep in _departments)
+            {
+                if (dep.DepName == oldName)
+                {
+                    dep.DepName = newName;
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

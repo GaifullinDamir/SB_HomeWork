@@ -43,17 +43,45 @@ namespace HW_Collections
                 {
                     case 1:
                         Console.WriteLine("\nВведите название департамента:");
-                        var depName = Console.ReadLine();
+                        var depName1 = Console.ReadLine();
                         Console.WriteLine("\nВведите дату создания департамента (dd.mm.yyyy):");
                         var strDateOfCreate = Console.ReadLine();
                         var dateOfCreate = DateOnly.Parse(strDateOfCreate);
-                        if (_departmentService.AddDepartment(depName, dateOfCreate))
+                        if (_departmentService.AddDepartment(depName1, dateOfCreate))
                         {
-                            Console.WriteLine($"Департамент {depName} добавлен.");
+                            Console.WriteLine($"\nДепартамент {depName1} добавлен.");
                         }
                         else
                         {
-                            Console.WriteLine("Произошла ошибка при добавлении.");
+                            Console.WriteLine("\nПроизошла ошибка при добавлении.");
+                        }
+                        break;
+
+                    case 3:
+                        Console.WriteLine("\nВведите название департамента:");
+                        var depName3 = Console.ReadLine();
+                        if (_departmentService.DeleteDepartment(depName3))
+                        {
+                            Console.WriteLine($"\nДепартамент {depName3} удалён.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nТакого департамента нет.");
+                        }
+                        break;
+
+                    case 5:
+                        Console.WriteLine("\nВведите название департамента:");
+                        var oldDepName = Console.ReadLine();
+                        Console.WriteLine("\nВведитен новое название департамента:");
+                        var newDepName = Console.ReadLine();
+                        if (_departmentService.EditDepName(oldDepName, newDepName))
+                        {
+                            Console.WriteLine($"\nИмя департамента изменено с {oldDepName} на {newDepName}.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nТакого департамента нет.");
                         }
                         break;
                     case 7:
