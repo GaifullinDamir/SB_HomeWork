@@ -4,6 +4,8 @@
     {
         public bool SearchDepartmentByName(string depName);
 
-        public void AddDepartment(string depName, DateOnly dateOfCreate);
+        public bool AddDepartment(string depName, DateOnly dateOfCreate);
+
+        public void ShowDepartments();
     }
 }

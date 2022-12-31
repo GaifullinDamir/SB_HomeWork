@@ -1,18 +1,16 @@
-﻿using HW_Collections.Services.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HW_Collections.Services;
+using HW_Collections.Services.Interfaces;
 
 namespace HW_Collections
 {
     public class UI
     {
+        private readonly Departments _departments;
         private readonly IDepartmentService _departmentService;
-        public UI(IDepartmentService departmentService)
+        public UI()
         {
-            _departmentService = departmentService;
+            _departments = new Departments();
+            _departmentService = new DepartmentService(_departments);
         }
         private void ShowMenu()
         {
@@ -39,14 +37,33 @@ namespace HW_Collections
             {
                 
                 ShowMenu();
-                int change;
-                Int32.TryParse(Console.ReadLine(), out change);
-                switch (change)
+                int choice;
+                Int32.TryParse(Console.ReadLine(), out choice);
+                switch (choice)
                 {
                     case 1:
-                        _departmentService.AddDepartment();
+                        Console.WriteLine("\nВведите название департамента:");
+                        var depName = Console.ReadLine();
+                        Console.WriteLine("\nВведите дату создания департамента (dd.mm.yyyy):");
+                        var strDateOfCreate = Console.ReadLine();
+                        var dateOfCreate = DateOnly.Parse(strDateOfCreate);
+                        if (_departmentService.AddDepartment(depName, dateOfCreate))
+                        {
+                            Console.WriteLine($"Департамент {depName} добавлен.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Произошла ошибка при добавлении.");
+                        }
+                        break;
+                    case 7:
+                        _departmentService.ShowDepartments();
+                        break;
+                    case 13:
+                        run = false;
                         break;
                     default:
+                        Console.WriteLine("Такого пункта меню нет.");
                         break;
                 }
             }
