@@ -1,4 +1,6 @@
-﻿using HW_Collections.Services;
+﻿using HW_Collections.DAL;
+using HW_Collections.DAL.Interfaces;
+using HW_Collections.Services;
 using HW_Collections.Services.Interfaces;
 
 namespace HW_Collections
@@ -7,10 +9,12 @@ namespace HW_Collections
     {
         private readonly Departments _departments;
         private readonly IDepartmentService _departmentService;
+        private readonly IXmlWork _xmlWork;
         public UI()
         {
             _departments = new Departments();
             _departmentService = new DepartmentService(_departments);
+            _xmlWork = new XmlWork();
         }
         private void ShowMenu()
         {
@@ -25,7 +29,7 @@ namespace HW_Collections
                 "8. Вывести сотрудников на экран\n" +
                 "9. Выгрузить департаменты в XML\n" +
                 "10. Выгрузить сотрудников в JSON\n" +
-                "11. Загрузить сотрудников из XML\n" +
+                "11. Загрузить департаменты из XML\n" +
                 "12. Загрузить сотрудников из JSON\n" +
                 "13. Завершить работу.\n");
         }
@@ -86,6 +90,13 @@ namespace HW_Collections
                         break;
                     case 7:
                         _departmentService.ShowDepartments();
+                        break;
+                    case 11:
+                        var departmnets = _xmlWork.DownloadFromXml();
+                        foreach (var department in departmnets)
+                        {
+                            _departmentService.AddReadyDepartment(department);
+                        }
                         break;
                     case 13:
                         run = false;

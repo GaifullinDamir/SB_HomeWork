@@ -2,5 +2,8 @@
 {
     public interface IXmlWork
     {
+        public bool UploadToXml();
+
+        public List<Department> DownloadFromXml();
     }
 }

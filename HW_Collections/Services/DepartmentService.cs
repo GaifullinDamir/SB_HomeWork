@@ -24,6 +24,11 @@ namespace HW_Collections.Services
             return false;
         }
 
+        public void AddReadyDepartment(Department department)
+        {
+            _departments.AddDepartment(department);
+        }
+
         public bool DeleteDepartment(string depName)
         {
             if (_departments.DeleteDepartment(depName))

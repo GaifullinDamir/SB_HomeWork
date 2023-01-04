@@ -29,6 +29,10 @@
             _departments.Add(department);
         }
 
+        public void AddDepartment(Department department)
+        {
+            _departments.Add(department);
+        }
         public bool DeleteDepartment(string depName)
         {
             if (SearchDepartmentByName(depName))

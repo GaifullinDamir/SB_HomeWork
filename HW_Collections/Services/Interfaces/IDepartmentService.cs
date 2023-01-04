@@ -6,6 +6,8 @@
 
         public bool AddDepartment(string depName, DateOnly dateOfCreate);
 
+        public void AddReadyDepartment(Department department);
+
         public bool DeleteDepartment(string depName);
 
         public bool EditDepName(string oldName, string newName);

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?> 
+<departments>
+	<department>
+		<DepName>Департамент_1</DepName>
+		<DateOfCreate>31.12.2022</DateOfCreate>
+	</department>
+	<department>
+		<DepName>Департамент_2</DepName>
+		<DateOfCreate>21.12.2022</DateOfCreate>
+	</department>
+	<department>
+		<DepName>Департамент_3</DepName>
+		<DateOfCreate>11.12.2022</DateOfCreate>
+	</department>
+	<department>
+		<DepName>Департамент_4</DepName>
+		<DateOfCreate>1.12.2022</DateOfCreate>
+	</department>
+	<department>
+		<DepName>Департамент_5</DepName>
+		<DateOfCreate>21.11.2022</DateOfCreate>
+	</department>
+</departments>
